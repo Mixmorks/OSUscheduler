@@ -8,7 +8,7 @@ echo phpversion();
 ?>
 
 <body>
-	<h3>This is the experimental/debugging Instance of the OSU scheduler. Expect things to be broken.</h3>
+	<h1>This is the experimental/debugging Instance of the OSU scheduler. Expect things to be broken.</h1>
     <div id="classes">
       <h3>Which classes do you need scheduled?</h3>
       <form action="buildscheduleBeta.php" method="GET">
@@ -28,9 +28,9 @@ echo phpversion();
 	</div>
 	
 	<h2>Important Note</h2>
-	The GitHub repo has all access data to the database. I believe this is necessary so people can try out their modifications but it's a huge security vulnerability.<br>
-	If the script can't find a class that you're SURE exists it might be that some jokester just dropped the table.<br>
-	In that case shoot me a message on FB or mail and I will re-upload the data. Should this happen too often I will change the database password and try to figure out something better.<br>
+	The GitHub repo does not have the Password. Shoot me a message and I'll send it to you.<br>
+	If someone drops the table shoot me a message on ONID or Facebook and I'll re-upload.<br>
+	Should that happen too often I'll think of another approach.<br>
 	
 	<div>
 		Known issues:<br>
