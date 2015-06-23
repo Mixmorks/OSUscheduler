@@ -310,7 +310,7 @@ function login(&$mysql_handler){
 	$dbuser = 'bartelja-db';
 	//Thanks for your interest. Since I don't want everyone and their dog to see just what happens with DROP TABLE I will send you the password upon request.
 	//Shoot me an email. ONID is bartelja or write me on Facebook.
-	$dbpass = 'THISISNOTTHEPASSWORDREADTHECOMMENT'; 
+	$dbpass = 'THISISNOTHTEREALPASSWORDREADTHECOMMENT'; 
 	
 	$mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
 		or die("Error connecting to database server - could it be that the password is incorrect?");
@@ -336,6 +336,12 @@ if(!empty($match[0])){ //If the user did enter a valid number we'll use that ins
 	$num_credits  = $match[0];
 }
 
+$user_term = $_GET['term'];
+preg_match('/[A-Z][0-9]{2}/', $user_term, $match);
+if(!empty($match[0])){ //If the user did enter a valid number we'll use that instead of the default.
+	$term  = $match[0];
+}
+
 $class_queue = array(); //This array will hold all the classes that we'll use to build the schedule.
 if(preg_match_all('/[A-Z]{1,5} \d{3}(H|NC)?/', $user_input, $valid_classes)){ //Will match H 113NC, ECON 112, MTH 241H etc
 	echo 'I found these valid classnames within your query: <br>';
@@ -344,7 +350,7 @@ if(preg_match_all('/[A-Z]{1,5} \d{3}(H|NC)?/', $user_input, $valid_classes)){ //
 		$name_and_number = explode(" ", $arr); //[0] = ECE, [1] = 375
 		
 		//Fetching database entries -- All entry is piped through Regex so I'm not concerned about SQL injections.
-		$sqlquery = mysql_query("SELECT * FROM OSUclasses WHERE DEP = '$name_and_number[0]' AND NUM = '$name_and_number[1]' AND TERM = 'F15'");  //Regex will filter out anything evil.
+		$sqlquery = mysql_query("SELECT * FROM OSUclasses WHERE DEP = '$name_and_number[0]' AND NUM = '$name_and_number[1]' AND TERM = '$term'");  //Regex will filter out anything evil.
 		//Creating new course class
 		if(mysql_num_rows($sqlquery) > 0){ //Checks if our query returned anything.
 			echo "$arr<br>"; //Print class that we found a the valid entry for.

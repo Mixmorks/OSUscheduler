@@ -14,7 +14,12 @@ echo phpversion();
       <form action="buildscheduleBeta.php" method="GET">
         Class: <input type="text" name="classes"><br>
 		Number Credits you want: <input type="num" name="credits"> (Default is 14)<br>
-	      <input type="submit" name="submit" value="Fetch Schedule"><br>
+	    Term: <select name="term">
+			<option value="F15">F15</option>
+			<option value="W16">W16</option>
+		  </select><br>
+		  <input type="submit" name="submit" value="Fetch Schedule"><br>
+		  
       </form>
 	</div>
 	
